@@ -578,11 +578,11 @@ var[data-type]:hover::before {
       <p>When content is authored in mixed language, a mechanism is needed to allow authors to indicate both the base language of the content as well as the language of individual words and phrases. The expectation is that assistive technologies and
     other tools that utilize text to speech synthesis would detect and apply the language requested when presenting the text.</p>
     </section>
-    <seciton>
+    <section>
       <h2 id="voice-family-gender-0">Voice Family / Gender<a class="self-link" aria-label="§" href="#voice-family-gender-0"></a></h2>
       <p>Content authors may elect to make adjustments of those paramters to control the spoken presentation for purposes such as providing a gender specific voice to reflect that of the author, or for a character (or characters) in theatrical
       presentation of a story. Many assistive technologies already provide user selection of voice family and gender independent of any authored intent.</p>
-    </seciton>
+    </section>
     <section id="phonetic-pronunciation-of-string-values">
       <h3 id="x2-2-phonetic-pronunciation-of-string-values"><bdi class="secno">2.2 </bdi>Phonetic Pronunciation of String Values<a class="self-link" aria-label="§" href="#phonetic-pronunciation-of-string-values"></a></h3>
       <p>In some cases words may need to have their phonetic pronunciation prescribed by the content author. This may occur when uncommon words (not supported by text to speech synthesizers), or in cases where word pronunciation will vary based on
@@ -630,79 +630,78 @@ var[data-type]:hover::before {
   <section id="gap-analysis">
     <h2 id="x3-gap-analysis"><bdi class="secno">3. </bdi>Gap Analysis<a class="self-link" aria-label="§" href="#gap-analysis"></a></h2>
     <p>Based on the features defined in the prior section, the following table presents existing speech presentation standards, HTML features, and WAI-ARIA attributes that may offer a method to achieve the requirement for HTML authors.</p>
-    <table width="100%" cellspacing="2" cellpadding="2" border="1">
+    <table>
       <tbody>
         <tr>
-          <th valign="top" align="left">Requirement<br></th>
-          <th valign="top">HTML<br></th>
-          <th valign="top">WAI-ARIA<br></th>
-          <th valign="top">PLS<br></th>
-          <th valign="top">CSS Speech<br></th>
-          <th valign="top">SSML<br></th>
+          <th>Requirement<br></th>
+          <th>HTML<br></th>
+          <th>WAI-ARIA<br></th>
+          <th>PLS<br></th>
+          <th>CSS Speech<br></th>
+          <th>SSML<br></th>
         </tr>
         <tr>
-          <th valign="top" align="left">Language<br></th>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Language<br></th>
+          <td>Yes<br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Voice Family/Gender<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Voice Family/Gender<br></th>
+          <td><br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Phonetic Pronunciation<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Phonetic Pronunciation<br></th>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
+          <td><br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Substitution<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Partial<br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Substitution<br></th>
+          <td><br></td>
+          <td>Partial<br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Rate/Pitch/Volume<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Rate/Pitch/Volume<br></th>
+          <td><br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Emphasis<br></th>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Emphasis<br></th>
+          <td>Yes<br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Say As<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Say As<br></th>
+          <td><br></td>
+          <td><br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
         </tr>
         <tr>
-          <th valign="top" align="left">Pausing<br></th>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center"><br></td>
-          <td valign="top" align="center">Yes<br></td>
-          <td valign="top" align="center">Yes<br></td>
+          <th>Pausing<br></th>
+          <td><br></td>
+          <td><br></td>
+          <td><br></td>
+          <td>Yes<br></td>
+          <td>Yes<br></td>
         </tr>
       </tbody>
     </table>
