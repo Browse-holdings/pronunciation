@@ -7,7 +7,7 @@ var respecConfig = {
     permalinkHide:     false,
     tocIntroductory: true,
     // specification status (e.g., WD, LC, NOTE, etc.). If in doubt use ED.
-    specStatus:           "ED",
+    specStatus:           "FPWD",
     noRecTrack: true,
     //crEnd:                "2012-04-30",
     //perEnd:               "2013-07-23",
@@ -15,7 +15,7 @@ var respecConfig = {
     //diffTool:             "http://www.aptest.com/standards/htmldiff/htmldiff.pl",
 
     // the specifications short name, as in http://www.w3.org/TR/short-name/
-    shortName:            "pronunciation-use-case",
+    shortName:            "pronunciation-use-cases",
 
 
     // if you wish the publication date to be other than today, set this
@@ -31,7 +31,7 @@ var respecConfig = {
     //previousDiffURI: "",
 
     // if there a publicly available Editors Draft, this is the link
-    edDraftURI: "https://w3c.github.io/pronunciation/user-scenarios",
+    edDraftURI: "https://w3c.github.io/pronunciation/use-cases",
 
     // if this is a LCWD, uncomment and set the end of its review period
     // lcEnd: "2012-02-21",
@@ -50,7 +50,8 @@ var respecConfig = {
       {
         name: "Paul Grenier",
          mailto: "paul.grenier@deque.com",
-         company: "Deque System"
+         company: "Deque System",
+         w3cid: 111500
       },
       {
         name: "Markku Hakkinen",

@@ -7,7 +7,7 @@ var respecConfig = {
     permalinkHide:     false,
     tocIntroductory: true,
     // specification status (e.g., WD, LC, NOTE, etc.). If in doubt use ED.
-    specStatus:           "ED",
+    specStatus:           "FPWD",
     noRecTrack: true,
     //crEnd:                "2012-04-30",
     //perEnd:               "2013-07-23",
@@ -20,7 +20,7 @@ var respecConfig = {
 
     // if you wish the publication date to be other than today, set this
     //publishDate:  "2017-05-09",
-    copyrightStart:  "2018",
+    copyrightStart:  "2019",
     license: "w3c-software",
 
     // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
@@ -50,17 +50,21 @@ var respecConfig = {
 
       {
        name: "Sam Kanta",
-       mailto: "sam.kanta@thesustainablechange.com"
+       mailto: "sam.kanta@thesustainablechange.com",
+       company: "Invited expert",
+       w3id: 111467
       },
          {
        name: "Christine Loew",
-       company: "College Board",
-       mailto: "cloew@collegeboard.org"
+       company: "Invited expert",
+       mailto: "cloew@collegeboard.org",
+       w3cid: 104628
       },
       {
        name: "Paul Grenier",
        company: "Deque System",
-       mailto: "paul.grenier@deque.com"
+       mailto: "paul.grenier@deque.com",
+       w3cid: 111500
           
       },
       {
