@@ -1,0 +1,810 @@
+<!DOCTYPE html><html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.30.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- ISSUES/NOTES --- */
+.issue-label {
+    text-transform: initial;
+}
+
+.warning > p:first-child { margin-top: 0 }
+.warning {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+}
+span.warning { padding: .1em .5em .15em; }
+
+.issue.closed span.issue-number {
+    text-decoration: line-through;
+}
+
+.warning {
+    border-color: #f11;
+    border-width: .2em;
+    border-style: solid;
+    background: #fbe9e9;
+}
+
+.warning-title:before{
+    content: "⚠"; /*U+26A0 WARNING SIGN*/
+    font-size: 3em;
+    float: left;
+    height: 100%;
+    padding-right: .3em;
+    vertical-align: top;
+    margin-top: -0.5em;
+}
+
+li.task-list-item {
+    list-style: none;
+}
+
+input.task-list-item-checkbox {
+    margin: 0 0.35em 0.25em -1.6em;
+    vertical-align: middle;
+}
+
+.issue a.respec-gh-label {
+  padding: 5px;
+  margin: 0 2px 0 2px;
+  font-size: 10px;
+  text-transform: none;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 4px;
+  position: relative;
+  bottom: 2px;
+  border: none;
+}
+
+.issue a.respec-label-dark {
+  color: #fff;
+  background-color: #000;
+}
+
+.issue a.respec-label-light {
+  color: #000;
+  background-color: #fff;
+}
+</style>
+  <title>Pronunciation Gap Analysis</title>
+  
+  <style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+@keyframes pop {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.25, 1.25);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+.respec-offending-element:target {
+  animation: pop 0.25s ease-in-out 0s 1;
+}
+
+.respec-offending-element,
+a[href].respec-offending-element {
+  text-decoration: red wavy underline;
+}
+@supports not (text-decoration: red wavy underline) {
+  .respec-offending-element:not(pre) {
+    display: inline-block;
+  }
+  .respec-offending-element {
+    /* Red squiggly line */
+    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
+      bottom repeat-x;
+  }
+}
+
+#references :target {
+  background: #eaf3ff;
+  animation: pop 0.4s ease-in-out 0s 1;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+a[href].orcid {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+a[href].orcid > svg {
+    margin-bottom: -2px;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2 > a.self-link,
+h3 > a.self-link,
+h4 > a.self-link,
+h5 > a.self-link,
+h6 > a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: 0.5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity 0.2s;
+  width: 2em;
+}
+
+h2 > a.self-link::before,
+h3 > a.self-link::before,
+h4 > a.self-link::before,
+h5 > a.self-link::before,
+h6 > a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2 > a.self-link,
+  h3 > a.self-link,
+  h4 > a.self-link,
+  h5 > a.self-link,
+  h6 > a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+  
+<link rel="canonical" href="https://www.w3.org/TR/pronunciation-gap-analysis/"><style>var {
+  position: relative;
+  cursor: pointer;
+}
+
+var[data-type]::before,
+var[data-type]::after {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+/* the triangle or arrow or caret or whatever */
+var[data-type]::before {
+  content: "";
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000;
+}
+
+/* actual text */
+var[data-type]::after {
+  content: attr(data-type);
+  transform: translateX(-50%) translateY(-100%);
+  background: #000;
+  text-align: center;
+  /* additional styling */
+  font-family: "Dank Mono", "Fira Code", monospace;
+  font-style: normal;
+  padding: 6px;
+  border-radius: 3px;
+  color: #daca88;
+  text-indent: 0;
+  font-weight: normal;
+}
+
+var[data-type]:hover::after,
+var[data-type]:hover::before {
+  opacity: 1;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "trace": true,
+  "doRDFa": "1.0",
+  "includePermalinks": true,
+  "permalinkEdge": true,
+  "permalinkHide": false,
+  "tocIntroductory": true,
+  "specStatus": "FPWD",
+  "noRecTrack": true,
+  "shortName": "pronunciation-gap-analysis",
+  "copyrightStart": "2019",
+  "license": "w3c-software",
+  "edDraftURI": "https://w3c.github.io/pronunciation/gap-analysis",
+  "editors": [
+    {
+      "name": "Markku Hakkinen",
+      "url": "https://www.w3.org/users/35712",
+      "mailto": "mhakkinen@ets.org",
+      "company": "Educational Testing Service",
+      "companyURI": "https://www.ets.org/",
+      "w3cid": 35712
+    },
+    {
+      "name": "Steve Noble",
+      "url": "https://www.w3.org/users/112867",
+      "mailto": "steve.noble@pearson.com",
+      "company": "Pearson",
+      "companyURI": "https://www.pearson.com/",
+      "w3cid": 98332
+    },
+    {
+      "name": "Irfan Ali",
+      "url": "https://www.w3.org/users/98332",
+      "mailto": "iali@ets.org",
+      "company": "Educational Testing Service",
+      "companyURI": "https://www.ets.org/",
+      "w3cid": 98332
+    },
+    {
+      "name": "Roy Ran",
+      "url": "https://www.w3.org",
+      "mailto": "ran@w3.org",
+      "company": "W3C",
+      "companyURI": "http://www.w3.org",
+      "w3cid": 100586
+    }
+  ],
+  "wg": "Accessible Platform Architectures Working Group",
+  "wgURI": "https://www.w3.org/WAI/APA/",
+  "wgPublicList": "public-pronunciation",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/83907/status",
+  "publishISODate": "2019-09-01T00:00:00.000Z",
+  "generatedSubtitle": "First Public Working Draft 01 September 2019"
+}</script><meta name="description" content="This document is the Gap Analysis Review which presents required features of Spoken Text Pronunciation and Presentation and existing standards or specifications that may support (or enable support) of those features. Gaps are defined when a
+    required feature does not have a corresponding method by which it can be authored in HTML."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"></head>
+<body class="h-entry informative"><div class="head">
+      <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title p-name">Pronunciation Gap Analysis</h1>
+      
+      <h2>
+        W3C First Public Working Draft
+        <time class="dt-published" datetime="2019-09-01">01 September 2019</time>
+      </h2>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2019/WD-pronunciation-gap-analysis-20190901/">https://www.w3.org/TR/2019/WD-pronunciation-gap-analysis-20190901/</a>
+              </dd><dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/pronunciation-gap-analysis/">https://www.w3.org/TR/pronunciation-gap-analysis/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/pronunciation/gap-analysis">https://w3c.github.io/pronunciation/gap-analysis</a></dd>
+        
+        
+        
+        
+        
+        
+        <dt>Editors:</dt>
+        <dd class="p-author h-card vcard" data-editor-id="35712"><a class="ed_mailto u-email email p-name" href="mailto:mhakkinen@ets.org">Markku Hakkinen</a>
+            (Educational Testing Service)
+          </dd><dd class="p-author h-card vcard" data-editor-id="98332"><a class="ed_mailto u-email email p-name" href="mailto:steve.noble@pearson.com">Steve Noble</a>
+            (Pearson)
+          </dd><dd class="p-author h-card vcard" data-editor-id="98332"><a class="ed_mailto u-email email p-name" href="mailto:iali@ets.org">Irfan Ali</a>
+            (Educational Testing Service)
+          </dd><dd class="p-author h-card vcard" data-editor-id="100586"><a class="ed_mailto u-email email p-name" href="mailto:ran@w3.org">Roy Ran</a>
+            (W3C)
+          </dd>
+        
+        
+        
+      </dl>
+      
+      
+      
+      <p class="copyright">
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+      ©
+      2019
+      
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
+      <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
+      W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules
+      apply.
+    </p>
+      <hr title="Separator for header">
+    </div>
+  <section id="abstract" class="introductory"><h2>Abstract</h2>
+    <p>This document is the Gap Analysis Review which presents required features of Spoken Text Pronunciation and Presentation and existing standards or specifications that may support (or enable support) of those features. Gaps are defined when a
+    required feature does not have a corresponding method by which it can be authored in HTML.</p>
+  </section>
+  <section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p><p>
+      This document was published by the <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> as a
+      First Public Working Draft.
+      
+    </p><p>
+      
+      Comments regarding this document are welcome.
+            Please send them to
+            <a href="mailto:public-pronunciation@w3.org">public-pronunciation@w3.org</a>
+            (<a href="https://lists.w3.org/Archives/Public/public-pronunciation/">archives</a>).
+          
+    </p><p>
+      Publication as a First Public Working Draft does not imply endorsement by the
+      <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
+      obsoleted by other documents at any time. It is inappropriate to cite this
+      document as other than work in progress.
+    </p><p>
+      
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+       The group does not expect this document to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+      
+                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83907/status">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent which the individual believes contains
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+      
+    </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#core-features-for-pronunciation-and-spoken-presentation"><bdi class="secno">2. </bdi>Core Features for Pronunciation and Spoken Presentation</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#language"><bdi class="secno">2.1 </bdi>Language</a></li><li class="tocline"><a class="tocxref" href="#phonetic-pronunciation-of-string-values"><bdi class="secno">2.2 </bdi>Phonetic Pronunciation of String Values</a></li><li class="tocline"><a class="tocxref" href="#string-substitution"><bdi class="secno">2.3 </bdi>String Substitution</a></li><li class="tocline"><a class="tocxref" href="#rate-pitch-volume"><bdi class="secno">2.4 </bdi>Rate / Pitch / Volume</a></li><li class="tocline"><a class="tocxref" href="#emphasis"><bdi class="secno">2.5 </bdi>Emphasis</a></li><li class="tocline"><a class="tocxref" href="#say-as"><bdi class="secno">2.6 </bdi>Say As</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#presentation-of-numeric-values"><bdi class="secno">2.6.1 </bdi>Presentation of Numeric Values</a></li><li class="tocline"><a class="tocxref" href="#presentation-of-string-values"><bdi class="secno">2.6.2 </bdi>Presentation of String Values</a></li></ol></li><li class="tocline"><a class="tocxref" href="#pausing"><bdi class="secno">2.7 </bdi>Pausing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#gap-analysis"><bdi class="secno">3. </bdi>Gap Analysis</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#language-0"><bdi class="secno">3.1 </bdi>Language</a></li><li class="tocline"><a class="tocxref" href="#voice-family-gender"><bdi class="secno">3.2 </bdi>Voice Family/Gender</a></li><li class="tocline"><a class="tocxref" href="#phonetic-pronunciation"><bdi class="secno">3.3 </bdi>Phonetic Pronunciation</a></li><li class="tocline"><a class="tocxref" href="#substitution"><bdi class="secno">3.4 </bdi>Substitution</a></li><li class="tocline"><a class="tocxref" href="#rate-pitch-volume-0"><bdi class="secno">3.5 </bdi>Rate/Pitch/Volume</a></li><li class="tocline"><a class="tocxref" href="#emphasis-0"><bdi class="secno">3.6 </bdi>Emphasis</a></li><li class="tocline"><a class="tocxref" href="#say-as-0"><bdi class="secno">3.7 </bdi>Say As</a></li><li class="tocline"><a class="tocxref" href="#pausing-0"><bdi class="secno">3.8 </bdi>Pausing</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">A.1 </bdi>Participants active in the Pronunciation TF at the time of publication</a></li></ol></li></ol></nav>
+  <section class="informative" id="introduction">
+    <h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2><p><em>This section is non-normative.</em></p>
+    <p>Accurate, consistent pronunciation and presentation of content spoken by text to speech synthesis (TTS) is an essential requirement in education and other domains. Organizations such as educational publishers and assessment vendors are
+    looking for a standards-based solution to enable authoring of spoken presentation guidance in HTML which can then be consumed by assistive technologies and other applications which utilize text to speech synthesis for rendering of content.</p>
+    <p><abbr title="World Wide Web Consortium">W3C</abbr> has developed two standards pertaining to the presentation of speech synthesis which have reached recommendation status, <a href="https://www.w3.org/TR/speech-synthesis11/">Speech Synthesis Markup Language</a> (SSML) and the <a href="https://www.w3.org/TR/pronunciation-lexicon/">Pronunciation Lexicon Specification</a> (PLS). Both standards are directly consumed by a speech synthesis engine supporting those standards. While a PLS file reference may be referenced in a HTML
+    page using <code>link rel</code>, there is no known uptake of PLS using this method by assistive technologies. While there are technically methods to allow authors to inline SSML within HTML (using namespaces), such an approach has not been
+    adopted, and anecdotal comments from browser and assistive technology vendors have suggested this is not a viable approach.</p>
+    <p><a href="https://www.w3.org/TR/css3-speech/">CSS Speech Module</a> is a retired <abbr title="World Wide Web Consortium">W3C</abbr> Working Group Note that describes mechanism by which content authors may apply a variety of speech styling and presentation properties to HTML. This approach
+    has a variety of advantages but does not implement the full set of features required for pronunciation. <a href="https://www.w3.org/TR/css3-speech/#pronunciation">Section 16</a> of the Note specifically references the issue of pronunciation:</p>
+    <blockquote>
+      CSS does not specify how to define the pronunciation (expressed using a well-defined phonetic alphabet) of a particular piece of text within the markup document. A "phonemes" property was described in earlier drafts of this specification, but
+      objections were raised due to breaking the principle of separation between content and presentation (the "phonemes" authored within aural CSS stylesheets would have needed to be updated each time text changed within the markup document). The
+      "phonemes" functionality is therefore considered out-of-scope in CSS (the presentation layer) and should be addressed in the markup / content layer.
+    </blockquote>
+    <p>While a portion of CSS Speech was demonstrated by <a href="https://developer.apple.com/videos/play/wwdc2011/519/">Apple in 2011 on iOS with Safari and VoiceOver</a>, it is not presently supported on any platform with any Assistive Technology,
+    and work on the standard has itself been stopped by the CSS working group.</p>
+    <p>Efforts to address this need have been considered by both assessment technology vendors and the publishing community. Citing the need for pronunciation and presentation controls, the IMS Global Learning Consortium added the ability to author SSML
+    markup, specify PLS files, and reference CSS Speech properties to the Question Test Interoperability (QTI) <a href="https://www.imsglobal.org/apip/apipv1p0/APIP_QTI_v1p0.html">Accessible Portable Item Protocol</a> (APIP). In practice, QTI/APIP
+    authored content is transformed into HTML for rendering in web browsers. This led to the dilemma that there is no standardized (and supported) method for inlining SSML in HTML, nor is there support for CSS Speech. This has led to the situation
+    where SSML is the primary authoring model, with assessment vendors implementing a custom method for adding the SSML (or SSML-like) features to HTML using non-standard or data attributes, with customized Read Aloud software consuming those
+    attributes for text to speech synthesis. Given the need to deliver accurate spoken presentation, non-standard approaches often include mis-use of WAI-ARIA, and novel or contextually non-valid attributes (e.g., <code>label</code>). A
+    particular problem occurs when custom pronunciation is applied via a misuse of the <code>aria-label</code> attribute, which results in an issue for screen reader users who also rely upon refreshable braille, and in which a hinted pronunciation
+    intended only for a text to speech synthesizer also appears on the braille display.</p>
+    <p>The attribute model for adding pronunciation and presentation guidance for assistive technologies and text to speech synthesis has demonstrated traction by vendors trying to solve this need. It should be noted that many of the required
+    features are not well supported by a single attribute, as most follow the form of a presentation property / value pairing. Using multiple attributes to provide guidance to assistive technologies is not novel, as seen with WAI-ARIA where multiple
+    attributes may be applied to a single element, for example, <code>role</code> and <code>aria-checked</code>. The <a href="https://w3c.github.io/publ-epub-revision/epub32/spec/epub-contentdocs.html#sec-xhtml-ssml-attrib">EPUB standard</a> for
+    digital publishing introduced a namespaced version of the SSML <code>phoneme</code> and <code>alphabet</code> attributes enabling content authors to provide pronunciation guidance. Uptake by the publishing community has been limited, reportedly
+    due to the lack of support in reading systems and assistive technologies.</p>
+  </section>
+  <section id="core-features-for-pronunciation-and-spoken-presentation">
+    <h2 id="x2-core-features-for-pronunciation-and-spoken-presentation"><bdi class="secno">2. </bdi>Core Features for Pronunciation and Spoken Presentation<a class="self-link" aria-label="§" href="#core-features-for-pronunciation-and-spoken-presentation"></a></h2>
+    <p>The common spoken pronunciation requirements from the education domain serve as a primary source for these features. These requirements can be broken down into the following main functions that would support authoring and spoken presentation
+    needs.</p>
+    <section id="language">
+      <h3 id="x2-1-language"><bdi class="secno">2.1 </bdi>Language<a class="self-link" aria-label="§" href="#language"></a></h3>
+      <p>When content is authored in mixed language, a mechanism is needed to allow authors to indicate both the base language of the content as well as the language of individual words and phrases. The expectation is that assistive technologies and
+    other tools that utilize text to speech synthesis would detect and apply the language requested when presenting the text.</p>
+    </section>
+    <seciton>
+      <h2 id="voice-family-gender-0">Voice Family / Gender<a class="self-link" aria-label="§" href="#voice-family-gender-0"></a></h2>
+      <p>Content authors may elect to make adjustments of those paramters to control the spoken presentation for purposes such as providing a gender specific voice to reflect that of the author, or for a character (or characters) in theatrical
+      presentation of a story. Many assistive technologies already provide user selection of voice family and gender independent of any authored intent.</p>
+    </seciton>
+    <section id="phonetic-pronunciation-of-string-values">
+      <h3 id="x2-2-phonetic-pronunciation-of-string-values"><bdi class="secno">2.2 </bdi>Phonetic Pronunciation of String Values<a class="self-link" aria-label="§" href="#phonetic-pronunciation-of-string-values"></a></h3>
+      <p>In some cases words may need to have their phonetic pronunciation prescribed by the content author. This may occur when uncommon words (not supported by text to speech synthesizers), or in cases where word pronunciation will vary based on
+      context, and that context may not be correctly described.</p>
+    </section>
+    <section id="string-substitution">
+      <h3 id="x2-3-string-substitution"><bdi class="secno">2.3 </bdi>String Substitution<a class="self-link" aria-label="§" href="#string-substitution"></a></h3>
+      <p>There are cases where content that is visually presented may require replacement (substitution) with an alternate textual form to ensure correct pronunciation by text to speech synthesizers. In some cases phonetic pronunciation may be a
+      solution to this need.</p>
+    </section>
+    <section id="rate-pitch-volume">
+      <h3 id="x2-4-rate-pitch-volume"><bdi class="secno">2.4 </bdi>Rate / Pitch / Volume<a class="self-link" aria-label="§" href="#rate-pitch-volume"></a></h3>
+      <p>While end users should have full control over spoken presentation parameters such as speaking rate, pitch, and volume (e.g., WCAG 1.4.2 ), content authors may elect to make adjustments of those parameters to control the spoken presentation for
+      purposes such as a theatrical presentation of a story. Many assistive technologies already provide user control speaking rate, pitch, and volume independent of any authored intent.</p>
+    </section>
+    <section id="emphasis">
+    <h3 id="x2-5-emphasis"><bdi class="secno">2.5 </bdi>Emphasis<a class="self-link" aria-label="§" href="#emphasis"></a></h3>
+    <p>In written text, an author may find it necessary to add emphasis to an important word or phrase. HTML supports both semantic elements (e.g., <code>em</code>) and CSS properties which, through a variety of style options, make programmatic
+    detection of authored emphasis difficult (e.g., <code>font-weight: heavy</code>). While the emphasis element has existed since HTML 2.0, there is currently no uptake by assistive technology or read aloud tools to present text semantically tagged
+    for emphasis to be spoken with emphasis.</p>
+    </section>
+    <section id="say-as">
+    <h3 id="x2-6-say-as"><bdi class="secno">2.6 </bdi>Say As<a class="self-link" aria-label="§" href="#say-as"></a></h3>
+      <p>While text to speech engines continue to improve in their ability to process text and provide accurate spoken rendering of acronyms and numeric values, there can be instances where uncommon terms or alphanumeric constructs pose challenges.
+      Further, some educators may have specific requirements as to how a numeric value be spoken which may differ from a TTS engine's default rendering. For example, the Smarter Balanced Assessment Consortium has developed <a href="https://portal.smarterbalanced.org/library/en/read-aloud-guidelines.pdf">Read Aloud Guidelines</a> to be followed by human readers used by students who may require a spoken presentation of an educational test, which includes specific examples
+      of how numeric values should be read aloud.</p>
+      <section id="presentation-of-numeric-values">
+        <h4 id="x2-6-1-presentation-of-numeric-values"><bdi class="secno">2.6.1 </bdi>Presentation of Numeric Values<a class="self-link" aria-label="§" href="#presentation-of-numeric-values"></a></h4>
+        <p>Precise control as to how numeric values should be spoken may not always be correctly determined by text to speech engines from context.&nbsp; Examples include speaking a number as individual digits, correct reading of year values, and
+        the correct speaking of ordinal and cardinal numbers.</p>
+      </section>
+      <section id="presentation-of-string-values">
+        <h4 id="x2-6-2-presentation-of-string-values"><bdi class="secno">2.6.2 </bdi>Presentation of String Values<a class="self-link" aria-label="§" href="#presentation-of-string-values"></a></h4>
+        <p>Precise control as to how string values should be spoken, which may not be determined correctly by text to speech synthesizers.</p>
+      </section>
+    </section>
+    <section id="pausing">
+      <h3 id="x2-7-pausing"><bdi class="secno">2.7 </bdi>Pausing<a class="self-link" aria-label="§" href="#pausing"></a></h3>
+      <p>Specific spoken presentation requirements exist in the <a href="">Accessibility Guidelines from PARCC</a>, and include requirements such as inserting pauses in the spoken presentation, before and after emphasized words and mathematical
+      terms. In practice, content authors may find it necessary to insert pauses between numeric values to limit the chance of hearing multiple numbers as a single value. One common technique to achieve pausing to date has involved inserting
+      non-visible commas before or after a text string requiring a pause. While this may work in practice for a read aloud TTS tool, it is problematic for screen reader users who may, based on verbosity settings, hear the multiple commas announced,
+      and for refreshable braille users who will have the commas visible in braille.</p>
+    </section>
+  </section>
+  <section id="gap-analysis">
+    <h2 id="x3-gap-analysis"><bdi class="secno">3. </bdi>Gap Analysis<a class="self-link" aria-label="§" href="#gap-analysis"></a></h2>
+    <p>Based on the features defined in the prior section, the following table presents existing speech presentation standards, HTML features, and WAI-ARIA attributes that may offer a method to achieve the requirement for HTML authors.</p>
+    <table width="100%" cellspacing="2" cellpadding="2" border="1">
+      <tbody>
+        <tr>
+          <th valign="top" align="left">Requirement<br></th>
+          <th valign="top">HTML<br></th>
+          <th valign="top">WAI-ARIA<br></th>
+          <th valign="top">PLS<br></th>
+          <th valign="top">CSS Speech<br></th>
+          <th valign="top">SSML<br></th>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Language<br></th>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Voice Family/Gender<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Phonetic Pronunciation<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Substitution<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Partial<br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Rate/Pitch/Volume<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Emphasis<br></th>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Say As<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+        <tr>
+          <th valign="top" align="left">Pausing<br></th>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center"><br></td>
+          <td valign="top" align="center">Yes<br></td>
+          <td valign="top" align="center">Yes<br></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>The following sections present how each of the required features may or may not be met by use of existing standards. A key considerationa in the analysis is whether a means exists to directly author (or annote) HTML content to incporate the
+    spoken presentationa and pronunciation feature.</p>
+    <section id="language-0">
+      <h3 id="x3-1-language"><bdi class="secno">3.1 </bdi>Language<a class="self-link" aria-label="§" href="#language-0"></a></h3>
+      <p>Allow content authors to specify the language of text contained within an element so that the TTS used for rendering will select the appropriate language for synthesis.<br></p>
+    
+      <h4 id="html">HTML<a class="self-link" aria-label="§" href="#language-0"></a></h4>
+      <p><code>lang</code> attribute can be applied at the document level or to individual elements. (WCAG) (AT Supported: some)<br></p>
+      <h4 id="ssml">SSML<a class="self-link" aria-label="§" href="#language-0"></a></h4>
+      <p><code>&lt;speak&gt;</code> In Paris, they pronounce it &lt;lang xml:lang="fr-FR"&gt;Paris&lt;/lang&gt; &lt;/speak&gt;</p>
+    </section>
+    <section id="voice-family-gender">
+      <h3 id="x3-2-voice-family-gender"><bdi class="secno">3.2 </bdi>Voice Family/Gender<a class="self-link" aria-label="§" href="#voice-family-gender"></a></h3>
+      <p>Allow content authors to specify a specific TTS voice to be used to render text. For example, content which presents a dialog between two people, a woman and a man, the author may specify that a female voice be used for the woman's text and a
+      male voice be used for the man. Some platform TTS services may support a variety of voices, identified by a name, gender, or even age.</p>
+      <h4 id="css">CSS<a class="self-link" aria-label="§" href="#voice-family-gender"></a></h4>
+      <p><code>lang</code> attribute can be applied to the document itself or to elements. (WCAG) (AT Supported: some)<br></p>
+      <h4 id="ssml-0">SSML<a class="self-link" aria-label="§" href="#voice-family-gender"></a></h4>
+      <div class="note" id="issue-container-generatedID"><div role="heading" class="ednote-title marker" id="h-ednote" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="phonetic-pronunciation">
+      <h3 id="x3-3-phonetic-pronunciation"><bdi class="secno">3.3 </bdi>Phonetic Pronunciation<a class="self-link" aria-label="§" href="#phonetic-pronunciation"></a></h3>
+      <p>Allow content authors to precisely specify the phonetic pronunciation of a word or phrase.</p>
+      <h4 id="pls">PLS<a class="self-link" aria-label="§" href="#phonetic-pronunciation"></a></h4>
+      <div class="note" id="issue-container-generatedID-0"><div role="heading" class="ednote-title marker" id="h-ednote-0" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="ssml-1">SSML<a class="self-link" aria-label="§" href="#phonetic-pronunciation"></a></h4>
+      <div class="note" id="issue-container-generatedID-1"><div role="heading" class="ednote-title marker" id="h-ednote-1" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="substitution">
+      <h3 id="x3-4-substitution"><bdi class="secno">3.4 </bdi>Substitution<a class="self-link" aria-label="§" href="#substitution"></a></h3>
+      <p>Allow content authors to substitute a text string to be rendered by TTS instead of the actual text contained in an element.</p>
+      <h4 id="wai-aria">WAI-ARIA<a class="self-link" aria-label="§" href="#substitution"></a></h4>
+      <p>The <a href="https://www.w3.org/TR/wai-aria/#aria-label"><code>aria-label</code></a> and <a href="https://www.w3.org/TR/wai-aria/#aria-labelledby"><code>aria-labelledby</code></a> attribute can be used by an author to supply a text string
+      that will become the accessible name for the element upon which it is applied.&nbsp; This usage effectively provides a mechanism for performing text substation that is supported by a screen reader. However, it is problematic for one significant reason; for users who utilize screen readers and refreshable Braille, the content that is voiced will not match the content that is sent to the refreshable Braille device. This mismatch would not be acceptable for some content, particularly for assessment content.<br></p>
+      <h4 id="ssml-2">SSML<a class="self-link" aria-label="§" href="#substitution"></a></h4>
+      <div class="note" id="issue-container-generatedID-2"><div role="heading" class="ednote-title marker" id="h-ednote-2" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="rate-pitch-volume-0">
+      <h3 id="x3-5-rate-pitch-volume"><bdi class="secno">3.5 </bdi>Rate/Pitch/Volume<a class="self-link" aria-label="§" href="#rate-pitch-volume-0"></a></h3>
+      <p>Allow content authors to specify characteristics, such as rate, pitch, and/or volume of the TTS rendering of the text.</p>
+      <h4 id="css-0">CSS<a class="self-link" aria-label="§" href="#rate-pitch-volume-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-3"><div role="heading" class="ednote-title marker" id="h-ednote-3" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="ssml-3">SSML<a class="self-link" aria-label="§" href="#rate-pitch-volume-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-4"><div role="heading" class="ednote-title marker" id="h-ednote-4" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="emphasis-0">
+      <h3 id="x3-6-emphasis"><bdi class="secno">3.6 </bdi>Emphasis<a class="self-link" aria-label="§" href="#emphasis-0"></a></h3>
+      <p>Allow content authors to specify that text content be spoken with emphasis, for example, louder and more slowly. This can be viewed as a simplification of the Rate/Pitch/Volume controls to reduce authoring complexity.</p>
+      <h4 id="html-0">HTML<a class="self-link" aria-label="§" href="#emphasis-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-5"><div role="heading" class="ednote-title marker" id="h-ednote-5" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="css-1">CSS<a class="self-link" aria-label="§" href="#emphasis-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-6"><div role="heading" class="ednote-title marker" id="h-ednote-6" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="ssml-4">SSML<a class="self-link" aria-label="§" href="#emphasis-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-7"><div role="heading" class="ednote-title marker" id="h-ednote-7" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="say-as-0">
+      <h3 id="x3-7-say-as"><bdi class="secno">3.7 </bdi>Say As<a class="self-link" aria-label="§" href="#say-as-0"></a></h3>
+      <div class="note" id="issue-container-generatedID-8"><div role="heading" class="ednote-title marker" id="h-ednote-8" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="css-2">CSS<a class="self-link" aria-label="§" href="#say-as-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-9"><div role="heading" class="ednote-title marker" id="h-ednote-9" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="ssml-5">SSML<a class="self-link" aria-label="§" href="#say-as-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-10"><div role="heading" class="ednote-title marker" id="h-ednote-10" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+    <section id="pausing-0">
+      <h3 id="x3-8-pausing"><bdi class="secno">3.8 </bdi>Pausing<a class="self-link" aria-label="§" href="#pausing-0"></a></h3>
+      <div class="note" id="issue-container-generatedID-11"><div role="heading" class="ednote-title marker" id="h-ednote-11" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="css-3">CSS<a class="self-link" aria-label="§" href="#pausing-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-12"><div role="heading" class="ednote-title marker" id="h-ednote-12" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+      <h4 id="ssml-6">SSML<a class="self-link" aria-label="§" href="#pausing-0"></a></h4>
+      <div class="note" id="issue-container-generatedID-13"><div role="heading" class="ednote-title marker" id="h-ednote-13" aria-level="4"><span>Editor's note</span></div><p class="">To be added</p></div>
+    </section>
+  </section>
+  <section class="appendix informative section" id="acknowledgements">
+	<h2 id="a-acknowledgments"><bdi class="secno">A. </bdi>Acknowledgments<a class="self-link" aria-label="§" href="#acknowledgements"></a></h2><p><em>This section is non-normative.</em></p>
+	<p>The following people contributed to the development of this document.</p>
+	<section class="section" id="ack_group">
+		<h3 id="a-1-participants-active-in-the-pronunciation-tf-at-the-time-of-publication"><bdi class="secno">A.1 </bdi>Participants active in the Pronunciation TF at the time of publication<a class="self-link" aria-label="§" href="#ack_group"></a></h3>
+		<ul>
+			<li>Irfan Ali (Educational Testing Service)</li>
+			<li>Michael Cooper (<abbr title="World Wide Web Consortium">W3C</abbr>/<abbr title="Massachusetts Institute of Technology">MIT</abbr>)</li>
+			<li>Dee Dyer (Educational Testing Service)</li>
+			<li>Markku Hakkinen (Educational Testing Service)</li>
+			<li>Christine Loew (Invited Expert)</li>
+			<li>Steve Noble (Pearson plc)</li>
+			<li>Roy Ran (<abbr title="World Wide Web Consortium">W3C</abbr>/Beihang)</li>
+			<li>Janina Sajka (<abbr title="World Wide Web Consortium">W3C</abbr> invited expert)</li>
+			<li>John, Foliot (Deque Systems, Inc.)</li>
+			<li>Paul, Grenier (Deque Systems, Inc.)</li>
+			<li>Sam, Kanta (Invited Expert)</li>
+			
+			<li>Léonie, Watson (TetraLogical)</li>
+
+		</ul>
+  </section>
+</section>
+
+
+
+<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>

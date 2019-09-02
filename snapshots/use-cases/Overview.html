@@ -1,0 +1,1195 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta charset="utf-8"><meta name="generator" content="ReSpec 24.30.5"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+span.example-title {
+    text-transform: none;
+}
+aside.example, div.example, div.illegal-example {
+    padding: 0.5em;
+    margin: 1em 0;
+    position: relative;
+    clear: both;
+}
+div.illegal-example { color: red }
+div.illegal-example p { color: black }
+aside.example, div.example {
+    padding: .5em;
+    border-left-width: .5em;
+    border-left-style: solid;
+    border-color: #e0cb52;
+    background: #fcfaee;
+}
+
+aside.example div.example {
+    border-left-width: .1em;
+    border-color: #999;
+    background: #fff;
+}
+aside.example div.example span.example-title {
+    color: #999;
+}
+</style>
+		<title>Pronunciation Use Cases</title>
+		
+		<style id="respec-mainstyle">/*****************************************************************
+ * ReSpec 3 CSS
+ * Robin Berjon - http://berjon.com/
+ *****************************************************************/
+
+@keyframes pop {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(1.25, 1.25);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Override code highlighter background */
+.hljs {
+  background: transparent !important;
+}
+
+/* --- INLINES --- */
+h1 abbr,
+h2 abbr,
+h3 abbr,
+h4 abbr,
+h5 abbr,
+h6 abbr,
+a abbr {
+  border: none;
+}
+
+dfn {
+  font-weight: bold;
+}
+
+a.internalDFN {
+  color: inherit;
+  border-bottom: 1px solid #99c;
+  text-decoration: none;
+}
+
+a.externalDFN {
+  color: inherit;
+  border-bottom: 1px dotted #ccc;
+  text-decoration: none;
+}
+
+a.bibref {
+  text-decoration: none;
+}
+
+.respec-offending-element:target {
+  animation: pop 0.25s ease-in-out 0s 1;
+}
+
+.respec-offending-element,
+a[href].respec-offending-element {
+  text-decoration: red wavy underline;
+}
+@supports not (text-decoration: red wavy underline) {
+  .respec-offending-element:not(pre) {
+    display: inline-block;
+  }
+  .respec-offending-element {
+    /* Red squiggly line */
+    background: url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=)
+      bottom repeat-x;
+  }
+}
+
+#references :target {
+  background: #eaf3ff;
+  animation: pop 0.4s ease-in-out 0s 1;
+}
+
+cite .bibref {
+  font-style: normal;
+}
+
+code {
+  color: #c83500;
+}
+
+th code {
+  color: inherit;
+}
+
+a[href].orcid {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+a[href].orcid > svg {
+    margin-bottom: -2px;
+}
+
+/* --- TOC --- */
+
+.toc a,
+.tof a {
+  text-decoration: none;
+}
+
+a .secno,
+a .figno {
+  color: #000;
+}
+
+ul.tof,
+ol.tof {
+  list-style: none outside none;
+}
+
+.caption {
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* --- TABLE --- */
+
+table.simple {
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-bottom: 3px solid #005a9c;
+}
+
+.simple th {
+  background: #005a9c;
+  color: #fff;
+  padding: 3px 5px;
+  text-align: left;
+}
+
+.simple th[scope="row"] {
+  background: inherit;
+  color: inherit;
+  border-top: 1px solid #ddd;
+}
+
+.simple td {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+
+.simple tr:nth-child(even) {
+  background: #f0f6ff;
+}
+
+/* --- DL --- */
+
+.section dd > p:first-child {
+  margin-top: 0;
+}
+
+.section dd > p:last-child {
+  margin-bottom: 0;
+}
+
+.section dd {
+  margin-bottom: 1em;
+}
+
+.section dl.attrs dd,
+.section dl.eldef dd {
+  margin-bottom: 0;
+}
+
+#issue-summary > ul,
+.respec-dfn-list {
+  column-count: 2;
+}
+
+#issue-summary li,
+.respec-dfn-list li {
+  list-style: none;
+}
+
+details.respec-tests-details {
+  margin-left: 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+
+details.respec-tests-details > * {
+  padding-right: 2em;
+}
+
+details.respec-tests-details[open] {
+  z-index: 999999;
+  position: absolute;
+  border: thin solid #cad3e2;
+  border-radius: 0.3em;
+  background-color: white;
+  padding-bottom: 0.5em;
+}
+
+details.respec-tests-details[open] > summary {
+  border-bottom: thin solid #cad3e2;
+  padding-left: 1em;
+  margin-bottom: 1em;
+  line-height: 2em;
+}
+
+details.respec-tests-details > ul {
+  width: 100%;
+  margin-top: -0.3em;
+}
+
+details.respec-tests-details > li {
+  padding-left: 1em;
+}
+
+a[href].self-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+
+aside.example .marker > a.self-link {
+  color: inherit;
+}
+
+h2 > a.self-link,
+h3 > a.self-link,
+h4 > a.self-link,
+h5 > a.self-link,
+h6 > a.self-link {
+  border: none;
+  color: inherit;
+  font-size: 83%;
+  height: 2em;
+  left: -1.6em;
+  opacity: 0.5;
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  top: 0;
+  transition: opacity 0.2s;
+  width: 2em;
+}
+
+h2 > a.self-link::before,
+h3 > a.self-link::before,
+h4 > a.self-link::before,
+h5 > a.self-link::before,
+h6 > a.self-link::before {
+  content: "§";
+  display: block;
+}
+
+@media (max-width: 767px) {
+  dd {
+    margin-left: 0;
+  }
+
+  /* Don't position self-link in headings off-screen */
+  h2 > a.self-link,
+  h3 > a.self-link,
+  h4 > a.self-link,
+  h5 > a.self-link,
+  h6 > a.self-link {
+    left: auto;
+    top: auto;
+  }
+}
+
+@media print {
+  .removeOnSave {
+    display: none;
+  }
+}
+</style>
+		
+		
+
+	<link rel="canonical" href="https://www.w3.org/TR/pronunciation-use-cases/"><style>/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+</style><style>var {
+  position: relative;
+  cursor: pointer;
+}
+
+var[data-type]::before,
+var[data-type]::after {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+/* the triangle or arrow or caret or whatever */
+var[data-type]::before {
+  content: "";
+  transform: translateX(-50%);
+  border-width: 4px 6px 0 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #000;
+}
+
+/* actual text */
+var[data-type]::after {
+  content: attr(data-type);
+  transform: translateX(-50%) translateY(-100%);
+  background: #000;
+  text-align: center;
+  /* additional styling */
+  font-family: "Dank Mono", "Fira Code", monospace;
+  font-style: normal;
+  padding: 6px;
+  border-radius: 3px;
+  color: #daca88;
+  text-indent: 0;
+  font-weight: normal;
+}
+
+var[data-type]:hover::after,
+var[data-type]:hover::before {
+  opacity: 1;
+}
+</style><script id="initialUserConfig" type="application/json">{
+  "trace": true,
+  "doRDFa": "1.0",
+  "includePermalinks": true,
+  "permalinkEdge": true,
+  "permalinkHide": false,
+  "tocIntroductory": true,
+  "specStatus": "FPWD",
+  "noRecTrack": true,
+  "shortName": "pronunciation-use-cases",
+  "copyrightStart": "2019",
+  "license": "w3c-software",
+  "edDraftURI": "https://w3c.github.io/pronunciation/use-cases",
+  "editors": [
+    {
+      "name": "Irfan Ali",
+      "url": "https://www.w3.org/users/98332",
+      "mailto": "iali@ets.org",
+      "company": "Educational Testing Service",
+      "companyURI": "https://www.ets.org/",
+      "w3cid": 98332
+    },
+    {
+      "name": "Paul Grenier",
+      "mailto": "paul.grenier@deque.com",
+      "company": "Deque System",
+      "w3cid": 111500
+    },
+    {
+      "name": "Markku Hakkinen",
+      "url": "https://www.w3.org/users/35712",
+      "mailto": "mhakkinen@ets.org",
+      "company": "Educational Testing Service",
+      "companyURI": "https://www.ets.org/",
+      "w3cid": 35712
+    },
+    {
+      "name": "Roy Ran",
+      "url": "https://www.w3.org",
+      "mailto": "ran@w3.org",
+      "company": "W3C",
+      "companyURI": "http://www.w3.org",
+      "w3cid": 100586
+    }
+  ],
+  "wg": "Accessible Platform Architectures Working Group",
+  "wgURI": "https://www.w3.org/WAI/APA/",
+  "wgPublicList": "public-pronunciation",
+  "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/83907/status",
+  "publishISODate": "2019-09-01T00:00:00.000Z",
+  "generatedSubtitle": "First Public Working Draft 01 September 2019"
+}</script><meta name="description" content="The objective of the Pronunciation Task Force is to develop normative specifications and best practices guidance collaborating with other W3C groups as appropriate, to provide for proper pronunciation in HTML content when using text to speech (TTS) synthesis. This document provides various use cases highlighting the need for standardization of pronunciation markup, to ensure that consistent and accurate representation of the content. The requirements from the user scenarios provide the basis for these technical requirements/specifications."><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WD"></head>
+	<body class="h-entry informative"><div class="head">
+      <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title p-name">Pronunciation Use Cases</h1>
+      
+      <h2>
+        W3C First Public Working Draft
+        <time class="dt-published" datetime="2019-09-01">01 September 2019</time>
+      </h2>
+      <dl>
+        <dt>This version:</dt><dd>
+                <a class="u-url" href="https://www.w3.org/TR/2019/WD-pronunciation-use-cases-20190901/">https://www.w3.org/TR/2019/WD-pronunciation-use-cases-20190901/</a>
+              </dd><dt>Latest published version:</dt><dd>
+                <a href="https://www.w3.org/TR/pronunciation-use-cases/">https://www.w3.org/TR/pronunciation-use-cases/</a>
+              </dd>
+        <dt>Latest editor's draft:</dt><dd><a href="https://w3c.github.io/pronunciation/use-cases">https://w3c.github.io/pronunciation/use-cases</a></dd>
+        
+        
+        
+        
+        
+        
+        <dt>Editors:</dt>
+        <dd class="p-author h-card vcard" data-editor-id="98332"><a class="ed_mailto u-email email p-name" href="mailto:iali@ets.org">Irfan Ali</a>
+            (Educational Testing Service)
+          </dd><dd class="p-author h-card vcard" data-editor-id="111500"><a class="ed_mailto u-email email p-name" href="mailto:paul.grenier@deque.com">Paul Grenier</a>
+            (Deque System)
+          </dd><dd class="p-author h-card vcard" data-editor-id="35712"><a class="ed_mailto u-email email p-name" href="mailto:mhakkinen@ets.org">Markku Hakkinen</a>
+            (Educational Testing Service)
+          </dd><dd class="p-author h-card vcard" data-editor-id="100586"><a class="ed_mailto u-email email p-name" href="mailto:ran@w3.org">Roy Ran</a>
+            (W3C)
+          </dd>
+        
+        
+        
+      </dl>
+      
+      
+      
+      <p class="copyright">
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a>
+      ©
+      2019
+      
+      <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>,
+      <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>,
+      <a href="https://ev.buaa.edu.cn/">Beihang</a>). 
+      W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>,
+      <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a rel="license" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> rules
+      apply.
+    </p>
+      <hr title="Separator for header">
+    </div>
+
+		<section id="abstract" class="introductory"><h2>Abstract</h2>
+            
+            
+			<p>The objective of the Pronunciation Task Force is to develop normative specifications and best practices guidance collaborating with other <abbr title="World Wide Web Consortium">W3C</abbr> groups as appropriate, to provide for proper pronunciation in HTML content when using text to speech (TTS) synthesis. This document provides various use cases highlighting the need for standardization of pronunciation markup, to ensure that consistent and accurate representation of the content. The requirements from the user scenarios provide the basis for these technical requirements/specifications.</p>
+		</section>
+
+		<section id="sotd" class="introductory"><h2>Status of This Document</h2><p><em>This section describes the status of this document at the time of its publication. Other documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p><p>
+      This document was published by the <a href="https://www.w3.org/WAI/APA/">Accessible Platform Architectures Working Group</a> as a
+      First Public Working Draft.
+      
+    </p><p>
+      
+      Comments regarding this document are welcome.
+            Please send them to
+            <a href="mailto:public-pronunciation@w3.org">public-pronunciation@w3.org</a>
+            (<a href="https://lists.w3.org/Archives/Public/public-pronunciation/">archives</a>).
+          
+    </p><p>
+      Publication as a First Public Working Draft does not imply endorsement by the
+      <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
+      obsoleted by other documents at any time. It is inappropriate to cite this
+      document as other than work in progress.
+    </p><p>
+      
+        This document was produced by a group
+        operating under the
+        <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+       The group does not expect this document to become a <abbr title="World Wide Web Consortium">W3C</abbr> Recommendation.
+      
+                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
+                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/83907/status">public list of any patent disclosures</a>
+            made in connection with the deliverables of
+            the group; that page also includes
+            instructions for disclosing a patent. An individual who has actual
+            knowledge of a patent which the individual believes contains
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
+            must disclose the information in accordance with
+            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
+          
+      
+    </p><p>
+                  This document is governed by the
+                  <a id="w3c_process_revision" href="https://www.w3.org/2019/Process-20190301/">1 March 2019 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.
+                </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#use-case-aria-ssml"><bdi class="secno">2. </bdi>Use Case aria-ssml</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice"><bdi class="secno">2.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal"><bdi class="secno">2.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience"><bdi class="secno">2.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options"><bdi class="secno">2.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work"><bdi class="secno">2.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations"><bdi class="secno">2.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-case-data-ssml"><bdi class="secno">3. </bdi>Use Case data-ssml</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice-0"><bdi class="secno">3.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal-0"><bdi class="secno">3.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience-0"><bdi class="secno">3.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options-0"><bdi class="secno">3.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work-0"><bdi class="secno">3.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations-0"><bdi class="secno">3.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-case-html5"><bdi class="secno">4. </bdi>Use Case HTML5</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice-1"><bdi class="secno">4.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal-1"><bdi class="secno">4.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience-1"><bdi class="secno">4.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options-1"><bdi class="secno">4.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work-1"><bdi class="secno">4.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations-1"><bdi class="secno">4.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-case-custom-element"><bdi class="secno">5. </bdi>Use Case Custom Element</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice-2"><bdi class="secno">5.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal-2"><bdi class="secno">5.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience-2"><bdi class="secno">5.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options-2"><bdi class="secno">5.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work-2"><bdi class="secno">5.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations-2"><bdi class="secno">5.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-case-json-ld"><bdi class="secno">6. </bdi>Use Case JSON-LD</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice-3"><bdi class="secno">6.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal-3"><bdi class="secno">6.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience-3"><bdi class="secno">6.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options-3"><bdi class="secno">6.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work-3"><bdi class="secno">6.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations-3"><bdi class="secno">6.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#use-case-ruby"><bdi class="secno">7. </bdi>Use Case Ruby</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#background-and-current-practice-4"><bdi class="secno">7.1 </bdi>Background and Current Practice</a></li><li class="tocline"><a class="tocxref" href="#goal-4"><bdi class="secno">7.2 </bdi>Goal</a></li><li class="tocline"><a class="tocxref" href="#target-audience-4"><bdi class="secno">7.3 </bdi>Target Audience</a></li><li class="tocline"><a class="tocxref" href="#implementation-options-4"><bdi class="secno">7.4 </bdi>Implementation Options</a></li><li class="tocline"><a class="tocxref" href="#existing-work-4"><bdi class="secno">7.5 </bdi>Existing Work</a></li><li class="tocline"><a class="tocxref" href="#problems-and-limitations-4"><bdi class="secno">7.6 </bdi>Problems and Limitations</a></li></ol></li><li class="tocline"><a class="tocxref" href="#acknowledgements"><bdi class="secno">A. </bdi>Acknowledgments</a><ol class="toc"><li class="tocline"><a class="tocxref" href="#ack_group"><bdi class="secno">A.1 </bdi>Participants active in the Pronunciation TF at the time of publication</a></li></ol></li></ol></nav>
+
+		<section class="informative" id="introduction">
+
+			<h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction<a class="self-link" aria-label="§" href="#introduction"></a></h2><p><em>This section is non-normative.</em></p>
+     
+            <p>This document provides use cases which describe specific implmentation approaches for introducing pronunciation
+				and spoken presentation authoring markup into HTML5. These approaches are based on the two primary approaches 
+				that have evolved from the Pronunciation Task Force members.  Other approaches may appear in subsequent working drafts.
+			</p>
+			<p>Successful use cases will be those that provide ease of authoring and consumption by assistive technologies and user 
+				agents that utilize synthetic speech for spoken presentation of web content. The most challenging aspect of consumption may
+				be alignment of the markup approach with the standard mechanisms by which assistive technologies, specifically screen
+				readers, obtain content via platform accessibility APIs.
+			</p>
+			
+			
+
+		</section>
+		<section id="use-case-aria-ssml">
+			<h2 id="x2-use-case-aria-ssml"><bdi class="secno">2. </bdi>Use Case aria-ssml<a class="self-link" aria-label="§" href="#use-case-aria-ssml"></a></h2>
+			<section id="background-and-current-practice">
+				<h3 id="x2-1-background-and-current-practice"><bdi class="secno">2.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice"></a></h3>
+				<p>A new <code>aria</code> attribute could be used to include pronunciation content.</p>
+			</section>
+			<section id="goal">
+				<h3 id="x2-2-goal"><bdi class="secno">2.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal"></a></h3>
+				<p>Embed SSML in an HTML document.</p>
+			</section>
+			<section id="target-audience">
+				<h3 id="x2-3-target-audience"><bdi class="secno">2.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience"></a></h3>
+				<ul>
+					<li>Assistive Technology</li>
+					<li>Browser Extensions</li>
+					<li>Search Engines</li>
+				</ul>
+			</section>
+			<section id="implementation-options">
+				<h3 id="x2-4-implementation-options"><bdi class="secno">2.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options"></a></h3>
+				<p><strong>aria-ssml as embedded JSON</strong></p>
+				<p>When AT encounters an element with aria-ssml, the AT should enhance the UI by processing the pronunciation content and passing it to the <a href="https://w3c.github.io/speech-api/">Web Speech API</a> or an external API (e.g., <a href="https://cloud.google.com/text-to-speech/">Google's Text to Speech API</a>).</p>
+				<div class="example" id="example-1">
+          <div class="marker">
+      <a class="self-link" href="#example-1">Example<bdi> 1</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml">I say <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-ssml</span>=<span class="hljs-string">'{"phoneme":{"ph":"pɪˈkɑːn","alphabet":"ipa"}}'</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.
+You say <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">aria-ssml</span>=<span class="hljs-string">'{"phoneme":{"ph":"ˈpi.kæn","alphabet":"ipa"}}'</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.</code></pre>
+        </div>
+				<p>Client will convert JSON to SSML and pass the XML string a speech API.</p>
+				<div class="example" id="example-2">
+          <div class="marker">
+      <a class="self-link" href="#example-2">Example<bdi> 2</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+msg.text = convertJSONtoSSML(element.getAttribute(<span class="hljs-string">'aria-ssml'</span>));
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+				<p><strong>aria-ssml referencing XML by template ID</strong></p>
+				<div class="example" id="example-3">
+          <div class="marker">
+      <a class="self-link" href="#example-3">Example<bdi> 3</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-comment">&lt;!-- ssml must appear inside a template to be valid --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pecan"</span>&gt;</span>
+<span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">speak</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.1"</span>
+       <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis"</span>
+       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis
+                   http://www.w3.org/TR/speech-synthesis11/synthesis.xsd"</span>
+       <span class="hljs-attr">xml:lang</span>=<span class="hljs-string">"en-US"</span>&gt;</span>
+    You say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+    I say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">speak</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">aria-ssml</span>=<span class="hljs-string">"#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will parse XML and serialize it before passing to a speech API:</p>
+				<div class="example" id="example-4">
+          <div class="marker">
+      <a class="self-link" href="#example-4">Example<bdi> 4</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+<span class="hljs-keyword">var</span> xml = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pecan'</span>).content.firstElementChild;
+msg.text = serialize(xml);
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+
+				<p><strong>aria-ssml referencing an XML string as script tag</strong></p>
+				<div class="example" id="example-5">
+          <div class="marker">
+      <a class="self-link" href="#example-5">Example<bdi> 5</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pecan"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/ssml+xml"</span>&gt;</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">speak</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.1"</span>
+       <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis"</span>
+       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis
+                   http://www.w3.org/TR/speech-synthesis11/synthesis.xsd"</span>
+       <span class="hljs-attr">xml:lang</span>=<span class="hljs-string">"en-US"</span>&gt;</span>
+    You say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+    I say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">speak</span>&gt;</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">aria-ssml</span>=<span class="hljs-string">"#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will pass the XML string raw to a speech API.</p>
+				<div class="example" id="example-6">
+          <div class="marker">
+      <a class="self-link" href="#example-6">Example<bdi> 6</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+msg.text = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pecan'</span>).textContent;
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+				<p><strong>aria-ssml referencing an external XML document by URL</strong></p>
+				<div class="example" id="example-7">
+          <div class="marker">
+      <a class="self-link" href="#example-7">Example<bdi> 7</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">aria-ssml</span>=<span class="hljs-string">"http://example.com/pronounce.ssml#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will pass the string payload to a speech API.</p>
+				<div class="example" id="example-8">
+          <div class="marker">
+      <a class="self-link" href="#example-8">Example<bdi> 8</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+<span class="hljs-keyword">var</span> response = <span class="hljs-keyword">await</span> fetch(el.dataset.ssml)
+msg.txt = <span class="hljs-keyword">await</span> response.text();
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+			</section>
+			<section id="existing-work">
+				<h3 id="x2-5-existing-work"><bdi class="secno">2.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work"></a></h3>
+				<ul>
+					<li><a href="https://github.com/alia11y/SSMLinHTMLproposal">aria-ssml proposal</a></li>
+					<li><a href="https://www.w3.org/TR/speech-synthesis11/">SSML</a></li>
+					<li><a href="https://w3c.github.io/speech-api/">Web Speech API</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations">
+				<h3 id="x2-6-problems-and-limitations"><bdi class="secno">2.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations"></a></h3>
+				<ul>
+					<li>aria-ssml is not a valid aria-* attribute.</li>
+					<li>OS/Browsers combinations that do not support the serialized XML usage of the Web Speech API.</li>
+				</ul>
+			</section>
+			
+		</section>
+
+		<section id="use-case-data-ssml">
+			<h2 id="x3-use-case-data-ssml"><bdi class="secno">3. </bdi>Use Case data-ssml<a class="self-link" aria-label="§" href="#use-case-data-ssml"></a></h2>
+			<section id="background-and-current-practice-0">
+				<h3 id="x3-1-background-and-current-practice"><bdi class="secno">3.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice-0"></a></h3>
+				<p>As an existing attribute, data-* could be used, with some conventions, to include pronunciation content.</p>
+			</section>
+			<section id="goal-0">
+				<h3 id="x3-2-goal"><bdi class="secno">3.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal-0"></a></h3>
+				<ul>
+					<li>Support repeated use within the page context</li>
+					<li>Support external file references</li>
+					<li>Reuse existing techniques without expanding specifications</li>
+				</ul>
+			</section>
+			<section id="target-audience-0">
+				<h3 id="x3-3-target-audience"><bdi class="secno">3.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience-0"></a></h3>
+				<p>Hearing users</p>
+			</section>
+			<section id="implementation-options-0">
+				<h3 id="x3-4-implementation-options"><bdi class="secno">3.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options-0"></a></h3>
+				<p><strong>data-ssml as embedded JSON</strong></p>
+				<p>When an element with data-ssml is encountered by an SSML-aware AT, the AT should enhance the user interface by processing the referenced SSML content and passing it to the <a href="https://w3c.github.io/speech-api/">Web Speech API</a> or an external API (e.g., <a href="https://cloud.google.com/text-to-speech/">Google's Text to Speech API</a>).</p>
+				<div class="example" id="example-9">
+          <div class="marker">
+      <a class="self-link" href="#example-9">Example<bdi> 9</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>The Pronunciation of Pecan<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">speak</span>&gt;</span>
+I say <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-ssml</span>=<span class="hljs-string">'{"phoneme":{"ph":"pɪˈkɑːn","alphabet":"ipa"}}'</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.
+You say <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">data-ssml</span>=<span class="hljs-string">'{"phoneme":{"ph":"ˈpi.kæn","alphabet":"ipa"}}'</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>.</code></pre>
+        </div>
+				<p>Client will convert JSON to SSML and pass the XML string a speech API.</p>
+				<div class="example" id="example-10">
+          <div class="marker">
+      <a class="self-link" href="#example-10">Example<bdi> 10</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+msg.text = convertJSONtoSSML(element.dataset.ssml);
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+
+				<p><strong>data-ssml referencing XML by template ID</strong></p>
+				<div class="example" id="example-11">
+          <div class="marker">
+      <a class="self-link" href="#example-11">Example<bdi> 11</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-comment">&lt;!-- ssml must appear inside a template to be valid --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pecan"</span>&gt;</span>
+<span class="hljs-meta">&lt;?xml version="1.0"?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">speak</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.1"</span>
+       <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis"</span>
+       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis
+                   http://www.w3.org/TR/speech-synthesis11/synthesis.xsd"</span>
+       <span class="hljs-attr">xml:lang</span>=<span class="hljs-string">"en-US"</span>&gt;</span>
+    You say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+    I say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">speak</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">data-ssml</span>=<span class="hljs-string">"#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will parse XML and serialize it before passing to a speech API:</p>
+				<div class="example" id="example-12">
+          <div class="marker">
+      <a class="self-link" href="#example-12">Example<bdi> 12</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+<span class="hljs-keyword">var</span> xml = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pecan'</span>).content.firstElementChild;
+msg.text = serialize(xml);
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+
+				<p><strong>data-ssml referencing an XML string as script tag</strong></p>
+				<div class="example" id="example-13">
+          <div class="marker">
+      <a class="self-link" href="#example-13">Example<bdi> 13</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"pecan"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/ssml+xml"</span>&gt;</span><span class="xml">
+<span class="hljs-tag">&lt;<span class="hljs-name">speak</span> <span class="hljs-attr">version</span>=<span class="hljs-string">"1.1"</span>
+       <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis"</span>
+       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://www.w3.org/2001/10/synthesis
+                   http://www.w3.org/TR/speech-synthesis11/synthesis.xsd"</span>
+       <span class="hljs-attr">xml:lang</span>=<span class="hljs-string">"en-US"</span>&gt;</span>
+    You say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+    I say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">speak</span>&gt;</span>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">data-ssml</span>=<span class="hljs-string">"#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will pass the XML string raw to a speech API.</p>
+				<div class="example" id="example-14">
+          <div class="marker">
+      <a class="self-link" href="#example-14">Example<bdi> 14</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+msg.text = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'pecan'</span>).textContent;
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+				<p><strong>data-ssml referencing an external XML document by URL</strong></p>
+				<div class="example" id="example-15">
+          <div class="marker">
+      <a class="self-link" href="#example-15">Example<bdi> 15</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">data-ssml</span>=<span class="hljs-string">"http://example.com/pronounce.ssml#pecan"</span>&gt;</span>You say, pecan. I say, pecan.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+				<p>Client will pass the string payload to a speech API.</p>
+				<div class="example" id="example-16">
+          <div class="marker">
+      <a class="self-link" href="#example-16">Example<bdi> 16</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-keyword">var</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+<span class="hljs-keyword">var</span> response = <span class="hljs-keyword">await</span> fetch(el.dataset.ssml)
+msg.txt = <span class="hljs-keyword">await</span> response.text();
+speechSynthesis.speak(msg);</code></pre>
+        </div>
+			</section>
+			<section id="existing-work-0">
+				<h3 id="x3-5-existing-work"><bdi class="secno">3.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work-0"></a></h3>
+				<ul>
+					<li><a href="https://github.com/alia11y/SSMLinHTMLproposal">aria-ssml proposal</a></li>
+					<li><a href="https://www.w3.org/TR/speech-synthesis11/">SSML</a></li>
+					<li><a href="https://w3c.github.io/speech-api/">Web Speech API</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations-0">
+				<h3 id="x3-6-problems-and-limitations"><bdi class="secno">3.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations-0"></a></h3>
+				<ul>
+					<li>Does not assume or suggest visual pronunciation help for deaf or hard of hearing</li>
+					<li>Use of data-* requires input from AT vendors</li>
+					<li>XML data is not indexed by search engines</li>
+				</ul>
+			</section>
+		</section>
+
+		<section id="use-case-html5">
+			<h2 id="x4-use-case-html5"><bdi class="secno">4. </bdi>Use Case HTML5<a class="self-link" aria-label="§" href="#use-case-html5"></a></h2>
+			<section id="background-and-current-practice-1">
+				<h3 id="x4-1-background-and-current-practice"><bdi class="secno">4.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice-1"></a></h3>
+				<p>HTML5 includes the XML namespaces for MathML and SVG. So, using either's elements in an HTML5 document is valid. Because SSML's implementation is non-visual in nature, browser implementation could be slow or non-existent without affecting how authors use SSML in HTML. Expansion of HTML5 to include SSML namespace would allow valid use of SSML in the HTML5 document. Browsers would treat the element like any other unknown element, as HTMLUnknownElement.</p>
+			</section>
+			<section id="goal-1">
+				<h3 id="x4-2-goal"><bdi class="secno">4.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal-1"></a></h3>
+				<ul>
+					<li>Support valid use of SSML in HTML5 documents</li>
+					<li>Allow visual pronunciation support</li>
+				</ul>
+			</section>
+			<section id="target-audience-1">
+				<h3 id="x4-3-target-audience"><bdi class="secno">4.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience-1"></a></h3>
+				<ul>
+					<li>SSML-aware technologies and browser extensions</li>
+					<li>Search indexers</li>
+				</ul>
+			</section>
+			<section id="implementation-options-1">
+				<h3 id="x4-4-implementation-options"><bdi class="secno">4.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options-1"></a></h3>
+				<p><strong>SSML</strong></p>
+				<p>When an element with data-ssml is encountered by an <a href="https://www.w3.org/TR/speech-synthesis11/">SSML</a>-aware AT, the AT should enhance the user interface by processing the referenced SSML content and passing it to the <a href="https://w3c.github.io/speech-api/">Web Speech API</a> or an external API (e.g., <a href="https://cloud.google.com/text-to-speech/">Google's Text to Speech API</a>).</p>
+				<div class="example" id="example-17">
+          <div class="marker">
+      <a class="self-link" href="#example-17">Example<bdi> 17</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>The Pronunciation of Pecan<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">speak</span>&gt;</span>
+  You say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+  I say, <span class="hljs-tag">&lt;<span class="hljs-name">phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">phoneme</span>&gt;</span>.
+<span class="hljs-tag">&lt;/<span class="hljs-name">speak</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+			</section>
+			<section id="existing-work-1">
+				<h3 id="x4-5-existing-work"><bdi class="secno">4.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work-1"></a></h3>
+				<ul>
+					<li><a href="https://www.w3.org/TR/voicexml21/">VoiceXML 2.1</a></li>
+					<li><a href="https://www.w3.org/TR/REC-smil/smil-extended-linking.html#SMILLinking-Relationship-to-XLink">SMIL - Synchronized Multimedia Integration Language</a></li>
+					<li><a href="https://www.w3.org/TR/pronunciation-lexicon/#AppB">PLS - Pronunciation Lexicon</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations-1">
+				<h3 id="x4-6-problems-and-limitations"><bdi class="secno">4.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations-1"></a></h3>
+				<p>SSML is not valid HTML5</p>
+			</section>
+		</section>
+
+		<section id="use-case-custom-element">
+			<h2 id="x5-use-case-custom-element"><bdi class="secno">5. </bdi>Use Case Custom Element<a class="self-link" aria-label="§" href="#use-case-custom-element"></a></h2>
+			<section id="background-and-current-practice-2">
+				<h3 id="x5-1-background-and-current-practice"><bdi class="secno">5.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice-2"></a></h3>
+				<p>Embed valid SSML in HTML using custom elements registered as ssml-* where * is the actual SSML tag name (except for p which expects the same treatment as an HTML p in HTML layout).</p>
+			</section>
+			<section id="goal-2">
+				<h3 id="x5-2-goal"><bdi class="secno">5.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal-2"></a></h3>
+				<p>Support use of SSML in HTML documents.</p>
+			</section>
+			<section id="target-audience-2">
+				<h3 id="x5-3-target-audience"><bdi class="secno">5.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience-2"></a></h3>
+				<ul>
+					<li>SSML-aware technologies and browser extensions</li>
+					<li>Search indexers</li>
+				</ul>
+			</section>
+			<section id="implementation-options-2">
+				<h3 id="x5-4-implementation-options"><bdi class="secno">5.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options-2"></a></h3>
+				<p><strong>ssml-speak: see <a href="https://ssml-components.glitch.me">demo</a> </strong></p>
+				<p>Only the &lt;ssml-speak&gt; component requires registration. The component code lifts the SSML by getting the innerHTML and removing the ssml- prefix from the interior tags and passing it to the web speech API. The &lt;p&gt; tag from SSML is not given the prefix because we still want to start a semantic paragraph within the content. The other tags used in the example have no semantic meaning. Tags like &lt;em&gt; in HTML could be converted to &lt;emphasis&gt; in SSML. In that case, CSS styles will come from the browser's default styles or the page author.</p>
+				<div class="example" id="example-18">
+          <div class="marker">
+      <a class="self-link" href="#example-18">Example<bdi> 18</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">ssml-speak</span>&gt;</span>
+  Here are <span class="hljs-tag">&lt;<span class="hljs-name">ssml-say-as</span> <span class="hljs-attr">interpret-as</span>=<span class="hljs-string">"characters"</span>&gt;</span>SSML<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-say-as</span>&gt;</span> samples.
+  I can pause<span class="hljs-tag">&lt;<span class="hljs-name">ssml-break</span> <span class="hljs-attr">time</span>=<span class="hljs-string">"3s"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">ssml-break</span>&gt;</span>.
+  I can speak in cardinals.
+  Your number is <span class="hljs-tag">&lt;<span class="hljs-name">ssml-say-as</span> <span class="hljs-attr">interpret-as</span>=<span class="hljs-string">"cardinal"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-say-as</span>&gt;</span>.
+  Or I can speak in ordinals.
+  You are <span class="hljs-tag">&lt;<span class="hljs-name">ssml-say-as</span> <span class="hljs-attr">interpret-as</span>=<span class="hljs-string">"ordinal"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-say-as</span>&gt;</span> in line.
+  Or I can even speak in digits.
+  The digits for ten are <span class="hljs-tag">&lt;<span class="hljs-name">ssml-say-as</span> <span class="hljs-attr">interpret-as</span>=<span class="hljs-string">"characters"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-say-as</span>&gt;</span>.
+  I can also substitute phrases, like the <span class="hljs-tag">&lt;<span class="hljs-name">ssml-sub</span> <span class="hljs-attr">alias</span>=<span class="hljs-string">"World Wide Web Consortium"</span>&gt;</span>W3C<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-sub</span>&gt;</span>.
+  Finally, I can speak a paragraph with two sentences.
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ssml-s</span>&gt;</span>You say, <span class="hljs-tag">&lt;<span class="hljs-name">ssml-phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"pɪˈkɑːn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-phoneme</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-s</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ssml-s</span>&gt;</span>I say, <span class="hljs-tag">&lt;<span class="hljs-name">ssml-phoneme</span> <span class="hljs-attr">alphabet</span>=<span class="hljs-string">"ipa"</span> <span class="hljs-attr">ph</span>=<span class="hljs-string">"ˈpi.kæn"</span>&gt;</span>pecan<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-phoneme</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-s</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ssml-speak</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">template</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ssml-controls"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    <span class="hljs-selector-attr">[role="switch"]</span><span class="hljs-selector-attr">[aria-checked="true"]</span> <span class="hljs-selector-pseudo">:first-child</span>,
+    <span class="hljs-selector-attr">[role="switch"]</span><span class="hljs-selector-attr">[aria-checked="false"]</span> <span class="hljs-selector-pseudo">:last-child</span> {
+      <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;
+      <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;
+    }
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"play"</span>&gt;</span>Speak<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"switch"</span> <span class="hljs-attr">aria-checked</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">aria-labelledby</span>=<span class="hljs-string">"play"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>on<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>off<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
+        </div>
+				<div class="example" id="example-19">
+          <div class="marker">
+      <a class="self-link" href="#example-19">Example<bdi> 19</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SSMLSpeak</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">HTMLElement</span> </span>{
+  <span class="hljs-keyword">constructor</span>() {
+    <span class="hljs-keyword">super</span>();
+    <span class="hljs-keyword">const</span> template = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'ssml-controls'</span>);
+    <span class="hljs-keyword">const</span> templateContent = template.content;
+    <span class="hljs-keyword">this</span>.attachShadow({<span class="hljs-attr">mode</span>: <span class="hljs-string">'open'</span>})
+      .appendChild(templateContent.cloneNode(<span class="hljs-literal">true</span>));
+  }
+  connectedCallback() {
+    <span class="hljs-keyword">const</span> button = <span class="hljs-keyword">this</span>.shadowRoot.querySelector(<span class="hljs-string">'[role="switch"][aria-labelledby="play"]'</span>)
+    <span class="hljs-keyword">const</span> ssml = <span class="hljs-keyword">this</span>.innerHTML.replace(<span class="hljs-regexp">/ssml-/gm</span>, <span class="hljs-string">''</span>)
+    <span class="hljs-keyword">const</span> msg = <span class="hljs-keyword">new</span> SpeechSynthesisUtterance();
+    msg.lang = <span class="hljs-built_in">document</span>.documentElement.lang;
+    msg.text = <span class="hljs-string">`&lt;speak version="1.1"
+      xmlns="http://www.w3.org/2001/10/synthesis"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2001/10/synthesis
+        http://www.w3.org/TR/speech-synthesis11/synthesis.xsd"
+      xml:lang="<span class="hljs-subst">${msg.lang}</span>"&gt;
+    <span class="hljs-subst">${ssml}</span>
+    &lt;/speak&gt;`</span>;
+    msg.voice = speechSynthesis.getVoices().find(<span class="hljs-function"><span class="hljs-params">voice</span> =&gt;</span> voice.lang.startsWith(msg.lang));
+    msg.onstart = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> button.setAttribute(<span class="hljs-string">'aria-checked'</span>, <span class="hljs-string">'true'</span>);
+    msg.onend = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> button.setAttribute(<span class="hljs-string">'aria-checked'</span>, <span class="hljs-string">'false'</span>);
+    button.addEventListener(<span class="hljs-string">'click'</span>, () =&gt; speechSynthesis[speechSynthesis.speaking ? <span class="hljs-string">'cancel'</span> : <span class="hljs-string">'speak'</span>](msg))
+  }
+}
+
+customElements.define(<span class="hljs-string">'ssml-speak'</span>, SSMLSpeak);</code></pre>
+        </div>
+			</section>
+			<section id="existing-work-2">
+				<h3 id="x5-5-existing-work"><bdi class="secno">5.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work-2"></a></h3>
+				<ul>
+					<li><a href="https://dom.spec.whatwg.org/#concept-element-custom">DOM Living Standard</a></li>
+					<li><a href="https://w3c.github.io/speech-api/">Web Speech API</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations-2">
+				<h3 id="x5-6-problems-and-limitations"><bdi class="secno">5.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations-2"></a></h3>
+				<ul>
+					<li>OS/Browsers combinations that do not support the serialized XML usage of the Web Speech API.</li>
+					<li>Browsers may need to map SSML tags with CSS styles for default user agent styles.</li>
+					<li>Without an extension or AT, only user interaction can start the Web Speech API.</li>
+					<li>Authors or parsing may need to remove HTML content with unintended SSML semantics before serialization.</li>
+				</ul>
+			</section>
+		</section>
+
+		<section id="use-case-json-ld">
+			<h2 id="x6-use-case-json-ld"><bdi class="secno">6. </bdi>Use Case JSON-LD<a class="self-link" aria-label="§" href="#use-case-json-ld"></a></h2>
+			<section id="background-and-current-practice-3">
+				<h3 id="x6-1-background-and-current-practice"><bdi class="secno">6.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice-3"></a></h3>
+				<p><a href="https://www.w3.org/2018/jsonld-cg-reports/json-ld/">JSON-LD</a> provides an established standard for embedding data in HTML. Unlike other microdata approaches, JSON-LD helps to reuse standardized annotations through external references.</p>
+			</section>
+			<section id="goal-3">
+				<h3 id="x6-2-goal"><bdi class="secno">6.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal-3"></a></h3>
+				<p>Support use of SSML in HTML documents.</p>
+			</section>
+			<section id="target-audience-3">
+				<h3 id="x6-3-target-audience"><bdi class="secno">6.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience-3"></a></h3>
+				<ul>
+					<li>SSML-aware technologies and browser extensions</li>
+					<li>Search indexers</li>
+				</ul>
+			</section>
+			<section id="implementation-options-3">
+				<h3 id="x6-4-implementation-options"><bdi class="secno">6.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options-3"></a></h3>
+				<p><strong>JSON-LD</strong></p>
+				<div class="example" id="example-20">
+          <div class="marker">
+      <a class="self-link" href="#example-20">Example<bdi> 20</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"application/ld+json"</span>&gt;</span><span class="javascript">
+{
+  <span class="hljs-string">"@context"</span>: <span class="hljs-string">"http://schema.org/"</span>,
+  <span class="hljs-string">"@id"</span>: <span class="hljs-string">"/Pronunciation#WKRP"</span>,
+  <span class="hljs-string">"@type"</span>: <span class="hljs-string">"TextPronunciation"</span>,
+  <span class="hljs-string">"@language"</span>: <span class="hljs-string">"en"</span>,
+  <span class="hljs-string">"text"</span>: <span class="hljs-string">"WKRP"</span>,
+  <span class="hljs-string">"speechToTextMarkup"</span>: <span class="hljs-string">"SSML"</span>,
+  <span class="hljs-string">"phoneticText"</span>: <span class="hljs-string">"&lt;say-as interpret-as=\"characters\"&gt;WKRP&lt;/say-as&gt;"</span>
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  Do you listen to <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">itemscope</span>
+    <span class="hljs-attr">itemtype</span>=<span class="hljs-string">"http://schema.org/TextPronunciation"</span>
+    <span class="hljs-attr">itemid</span>=<span class="hljs-string">"/Pronunciation#WKRP"</span>&gt;</span>WKRP<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>?
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+			</section>
+			<section id="existing-work-3">
+				<h3 id="x6-5-existing-work"><bdi class="secno">6.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work-3"></a></h3>
+				<ul>
+					<li><a href="https://www.w3.org/WoT/WG/">Web of Things Working Group</a></li>
+					<li><a href="https://schema.org/">Schema.org</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations-3">
+				<h3 id="x6-6-problems-and-limitations"><bdi class="secno">6.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations-3"></a></h3>
+				<p>not an established "type"/published schema</p>
+			</section>
+		</section>
+		<section id="use-case-ruby">
+			<h2 id="x7-use-case-ruby"><bdi class="secno">7. </bdi>Use Case Ruby<a class="self-link" aria-label="§" href="#use-case-ruby"></a></h2>
+			<section id="background-and-current-practice-4">
+				<h3 id="x7-1-background-and-current-practice"><bdi class="secno">7.1 </bdi>Background and Current Practice<a class="self-link" aria-label="§" href="#background-and-current-practice-4"></a></h3>
+				<blockquote>&lt;Ruby&gt; annotations are short runs of text presented alongside base text, primarily used in East Asian typography as a guide for pronunciation or to include other annotations.</blockquote>
+				<p>ruby guides pronunciation visually. This seems like a natural fit for text-to-speech.</p>
+			</section>
+			<section id="goal-4">
+				<h3 id="x7-2-goal"><bdi class="secno">7.2 </bdi>Goal<a class="self-link" aria-label="§" href="#goal-4"></a></h3>
+				<ul>
+					<li>Support use of SSML in HTML documents.</li>
+					<li>Offer visual pronunciation support.</li>
+				</ul>
+			</section>
+			<section id="target-audience-4">
+				<h3 id="x7-3-target-audience"><bdi class="secno">7.3 </bdi>Target Audience<a class="self-link" aria-label="§" href="#target-audience-4"></a></h3>
+				<ul>
+					<li>AT and browser extensions</li>
+					<li>Search indexers</li>
+				</ul>
+			</section>
+			<section id="implementation-options-4">
+				<h3 id="x7-4-implementation-options"><bdi class="secno">7.4 </bdi>Implementation Options<a class="self-link" aria-label="§" href="#implementation-options-4"></a></h3>
+				<p><strong>ruby with microdata</strong></p>
+				<p>Microdata can augment the ruby element and its descendants.</p>
+				<div class="example" id="example-21">
+          <div class="marker">
+      <a class="self-link" href="#example-21">Example<bdi> 21</bdi></a>
+    </div> <pre aria-busy="false"><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+  You say,
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">itemscope</span>=<span class="hljs-string">""</span> <span class="hljs-attr">itemtype</span>=<span class="hljs-string">"http://example.org/Pronunciation"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ruby</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"phoneme"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"pecan"</span>&gt;</span>
+      pecan
+      <span class="hljs-tag">&lt;<span class="hljs-name">rt</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"ph"</span>&gt;</span>pɪˈkɑːn<span class="hljs-tag">&lt;/<span class="hljs-name">rt</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"alphabet"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ipa"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ruby</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  I say,
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">itemscope</span>=<span class="hljs-string">""</span> <span class="hljs-attr">itemtype</span>=<span class="hljs-string">"http://example.org/Pronunciation"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ruby</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"phoneme"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"pecan"</span>&gt;</span>
+      pe
+      <span class="hljs-tag">&lt;<span class="hljs-name">rt</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"ph"</span>&gt;</span>ˈpi<span class="hljs-tag">&lt;/<span class="hljs-name">rt</span>&gt;</span>
+      can
+      <span class="hljs-tag">&lt;<span class="hljs-name">rt</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"ph"</span>&gt;</span>kæn<span class="hljs-tag">&lt;/<span class="hljs-name">rt</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">itemprop</span>=<span class="hljs-string">"alphabet"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"ipa"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ruby</span>&gt;</span>.
+  <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre>
+        </div>
+			</section>
+			<section id="existing-work-4">
+				<h3 id="x7-5-existing-work"><bdi class="secno">7.5 </bdi>Existing Work<a class="self-link" aria-label="§" href="#existing-work-4"></a></h3>
+				<ul>
+					<li><a href="https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-ruby-element">HTML Living Standard</a></li>
+					<li><a href="https://schema.org/">Schema.org</a></li>
+				</ul>
+			</section>
+			<section id="problems-and-limitations-4">
+				<h3 id="x7-6-problems-and-limitations"><bdi class="secno">7.6 </bdi>Problems and Limitations<a class="self-link" aria-label="§" href="#problems-and-limitations-4"></a></h3>
+				<ul>
+					<li>AT may process annotations as content</li>
+					<li>AT "double reading" words instead of choosing either the content or the annotation</li>
+					<li>Only offers for a few SSML expressions</li>
+					<li>Difficult to reuse by reference</li>
+				</ul>
+			</section>
+		</section>
+
+		
+
+
+
+		<section class="appendix informative section" id="acknowledgements">
+	<h2 id="a-acknowledgments"><bdi class="secno">A. </bdi>Acknowledgments<a class="self-link" aria-label="§" href="#acknowledgements"></a></h2><p><em>This section is non-normative.</em></p>
+	<p>The following people contributed to the development of this document.</p>
+	<section class="section" id="ack_group">
+		<h3 id="a-1-participants-active-in-the-pronunciation-tf-at-the-time-of-publication"><bdi class="secno">A.1 </bdi>Participants active in the Pronunciation TF at the time of publication<a class="self-link" aria-label="§" href="#ack_group"></a></h3>
+		<ul>
+			<li>Irfan Ali (Educational Testing Service)</li>
+			<li>Michael Cooper (<abbr title="World Wide Web Consortium">W3C</abbr>/<abbr title="Massachusetts Institute of Technology">MIT</abbr>)</li>
+			<li>Dee Dyer (Educational Testing Service)</li>
+			<li>Markku Hakkinen (Educational Testing Service)</li>
+			<li>Christine Loew (Invited Expert)</li>
+			<li>Steve Noble (Pearson plc)</li>
+			<li>Roy Ran (<abbr title="World Wide Web Consortium">W3C</abbr>/Beihang)</li>
+			<li>Janina Sajka (<abbr title="World Wide Web Consortium">W3C</abbr> invited expert)</li>
+			<li>John, Foliot (Deque Systems, Inc.)</li>
+			<li>Paul, Grenier (Deque Systems, Inc.)</li>
+			<li>Sam, Kanta (Invited Expert)</li>
+			
+			<li>Léonie, Watson (TetraLogical)</li>
+
+		</ul>
+  </section>
+</section>
+
+
+
+
+	
+
+<p role="navigation" id="back-to-top"><a href="#title"><abbr title="Back to Top">↑</abbr></a></p><script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script></body></html>
